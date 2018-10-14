@@ -8,4 +8,17 @@
 2) 理论上可以容纳63台主机；  
 3)北大可以有1023个这样的子网。  
 
-问题2：解释TCP协议建立连接为什么设计为三步握手（3-way handshake）？
+问题2：解释TCP协议建立连接为什么设计为三步握手（3-way handshake）？  
+
+回答：三步握手（3-way handshake）的设计有效消除一步和两步握手导致的
+
+
+
+
+
+ref:  
+1.https://baike.baidu.com/item/%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/100207?fr=aladdin  
+2.https://blog.csdn.net/messiran10/article/details/51456869  
+3.
+4.
+
