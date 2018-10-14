@@ -19,12 +19,17 @@
 问题3.有哪些恶意软件, 如何防范恶意软件？  
 
 回答：恶意软件有：在计算机系统上执行恶意任务的病毒、蠕虫和特洛伊木马。  
-
-
+防范恶意软件的方法有：  
+■ 邮件附件包括压缩文件在打开之前进行杀毒扫描  
+■ 禁止使用不必要的软件，譬如说那些经常传播恶意软件的应用程序(即时通讯软件，桌面搜索引擎，点对点的文件共享软件)  
+■ 操作系统和应用程序的实时更新和下载补丁  
+■ 限制移动媒介的使用，软盘，CD，USB接口闪存的使用，使用时查杀病毒  
+■ 安装主流计算机防卫软件  
+■ 安全上网，选择官方网站  
 ref:  
 1.https://baike.baidu.com/item/%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/100207?fr=aladdin  
 2.https://blog.csdn.net/messiran10/article/details/51456869  
 3.https://baike.baidu.com/item/ACK/3692629?fr=aladdin
 4.https://baike.baidu.com/item/SYN/8880122?fr=aladdin
 5.https://baike.baidu.com/item/%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6/6588650?fr=aladdin
-6.
+6.http://www.360doc.com/content/14/0811/12/17799864_401008338.shtml
