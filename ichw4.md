@@ -5,13 +5,12 @@
    进程：进程是指程序的一段执行过程，它是系统调度资源、分配资源的一个单位；  
    线程：线程是进程中的一个实体，是被系统独立调度和分派的基本单位，它是是程序执行流的最小单元。  
 Ⅱ.解决的问题：  
-   进程的概念是进程是为使程序能并发执行，且为了对并发执行的程序加以描述和控制而引入的概念。  
-   线程  
-  
+   进程是为使程序能并发执行，且为了对并发执行的程序加以描述和控制而引入的概念。  
+   线程的提出是为了在多处理器的系统中提高程序的并行执行效率而提出的概念。  
+   
 ref:    
 1.https://zhidao.baidu.com/question/2206739129718674188.html  
 2.https://baike.baidu.com/item/%E7%BA%BF%E7%A8%8B/103101?fr=aladdin  
 3.https://zhidao.baidu.com/question/2206739129718674188.html  
 4.https://blog.csdn.net/mabaocheng/article/details/552172  
 5.https://baike.baidu.com/item/%E7%BA%BF%E7%A8%8B/103101?fr=aladdin  
-6.  
