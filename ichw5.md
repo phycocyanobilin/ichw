@@ -16,11 +16,15 @@
 此种情况下，server一直等待client发送数据包，导致时间资源被浪费。  
 若采取三步握手，即第二步server发送SYN-ACK信号，第三步client回复ACK字符，在没有收到client的确认时server不会建立连接，从而节约了资源。  
 
+问题3.有哪些恶意软件, 如何防范恶意软件？  
+
+回答：恶意软件有：在计算机系统上执行恶意任务的病毒、蠕虫和特洛伊木马。  
 
 
 ref:  
 1.https://baike.baidu.com/item/%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/100207?fr=aladdin  
 2.https://blog.csdn.net/messiran10/article/details/51456869  
-3.
-4.
-
+3.https://baike.baidu.com/item/ACK/3692629?fr=aladdin
+4.https://baike.baidu.com/item/SYN/8880122?fr=aladdin
+5.https://baike.baidu.com/item/%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6/6588650?fr=aladdin
+6.
