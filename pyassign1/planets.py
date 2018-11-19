@@ -9,7 +9,7 @@ __email__  = "1800011820@pku.edu.cn"
 import turtle
 import math
 
-turtle.setup(width=550,height=600, startx=700, starty=0)
+turtle.setup(width=1000,height=600, startx=None, starty=None)
 bg = turtle.bgcolor('black')
 sun = turtle.Turtle()
 sun.shape('circle')
