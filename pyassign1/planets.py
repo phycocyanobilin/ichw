@@ -9,7 +9,7 @@ __email__  = "1800011820@pku.edu.cn"
 import turtle
 import math
 
-turtle.setup(width=1000,height=600, startx=None, starty=None)
+turtle.setup(width=1000,height=600,startx=None,starty=None)
 bg = turtle.bgcolor('black')
 sun = turtle.Turtle()
 sun.shape('circle')
@@ -92,7 +92,6 @@ while i != 0:
    
     t += 1
     
-   
     a1 = 80*math.sin(math.radians(3*t))
     a2 = 60*math.cos(math.radians(3*t))
     planet1.goto(a1-40,a2)
@@ -116,5 +115,3 @@ while i != 0:
     a1 = 580*math.sin(math.radians(0.25*t))
     a2 = 480*math.cos(math.radians(0.25*t))
     planet6.goto(a1-200,a2)
-
-    
