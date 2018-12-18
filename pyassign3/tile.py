@@ -48,14 +48,14 @@ def test_puzhuan_lr(i,j,a,b):
     #判断能否横着铺
     if i+b-1 > n or j+a-1 > m:
         return False
-    i_3 = i-1
+    i_1 = i-1
     for i_2 in qiang[i-1:i+b-1] :
-        for j_2 in range(j-1,j+a-1):
-            if qiang[i_3][j_2] == 0:
+        for j_1 in range(j-1,j+a-1):
+            if qiang[i_1][j_1] == 0:
                 pass
             else:
                 return False
-        i_3 += 1
+        i_1 += 1
     return True
 
     
@@ -63,14 +63,14 @@ def test_puzhuan_ud(i,j,a,b):
     #判断能否竖着铺
     if i+a-1 > n or j+b-1 > m:
         return False
-    i_3 = i-1
+    i_1 = i-1
     for i_2 in qiang[i-1:i+a-1] :
-        for j_2 in range(j-1,j+b-1):
-            if qiang[i_3][j_2] == 0:
+        for j_1 in range(j-1,j+b-1):
+            if qiang[i_1][j_1] == 0:
                 pass
             else:
                 return False
-        i_3 += 1
+        i_1 += 1
     return True
         
 '''********************************************下面是函数正文**************************************************'''     
@@ -78,12 +78,6 @@ def test_puzhuan_ud(i,j,a,b):
 def tile(m,n,a,b):
     global num,all_ans
     
-    #判断特殊情况：当长和宽相等时的情况
-    if a == b:
-        num = 1
-        all_ans = 'There is only one combination!'
-        return num
-        
     #判断是否应该结束递归
     if findblocks() != False:
         i = findblocks()[0]
@@ -178,8 +172,40 @@ def standardization(k):
         standard_answer.append(order.copy()) 
     return standard_answer
 
+def drawbricks(key):
+        import turtle
+        aturtle = turtle.Turtle()
+        aturtle.hideturtle()
+        aturtle.penup()
+        aturtle.speed(0)
+        aturtle.pensize(2)
+        #将坐标抽象成矩形的对角线的端点
+        for i in key:
+            x1,y1,x2,y2 = n,m,0,0
+            for j in i:
+                if j[0] < x1:
+                    x1 = j[0]
+                if j[1] < y1:
+                    y1 = j[1]
 
-def draw(choose):
+                if j[0] > x2:
+                    x2 = j[0]
+                if j[1] > y2:
+                    y2 = j[1]
+
+            aturtle.setposition(-20*m+40*(y1-1),20*n-40*(x1-1))
+            aturtle.color('black','yellow')
+            aturtle.pendown()
+            aturtle.begin_fill()
+            aturtle.goto(-20*m+40*(y2),20*n-40*(x1-1))
+            aturtle.goto(-20*m+40*(y2),20*n-40*(x2))
+            aturtle.goto(-20*m+40*(y1-1),20*n-40*(x2))
+            aturtle.goto(-20*m+40*(y1-1),20*n-40*(x1-1))
+            aturtle.end_fill()
+            aturtle.penup()
+
+
+def draw(choose,all_ans):
     #作图
     
     import turtle
@@ -206,47 +232,40 @@ def draw(choose):
     #画砖
     aturtle.pensize(2)
     aturtle.penup()
-    #将坐标抽象成矩形的对角线的端点
-    for i in choose:
-        x1,y1,x2,y2 = n,m,0,0
-        for j in i:
-            if j[0] < x1:
-                x1 = j[0]
-            if j[1] < y1:
-                y1 = j[1]
-                
-            if j[0] > x2:
-                x2 = j[0]
-            if j[1] > y2:
-                y2 = j[1]
-                
-        aturtle.setposition(-20*m+40*(y1-1),20*n-40*(x1-1))
-        aturtle.color('black','yellow')
-        aturtle.pendown()
-        aturtle.begin_fill()
-        aturtle.goto(-20*m+40*(y2),20*n-40*(x1-1))
-        aturtle.goto(-20*m+40*(y2),20*n-40*(x2))
-        aturtle.goto(-20*m+40*(y1-1),20*n-40*(x2))
-        aturtle.goto(-20*m+40*(y1-1),20*n-40*(x1-1))
-        aturtle.end_fill()
-        aturtle.penup()
-        
     
+    if all_ans != 'There is only one combination!':
+        #将坐标抽象成矩形的对角线的端点
+        drawbricks(choose)
+        
+    else:
+        all_ans = []
+        drawbricks(choose)
+        
+        
 def main():
     input_test(m,n,a,b)
     
-    tile(m,n,a,b)
+    global all_ans
     
-    print('所有铺法如下：')
-    for i in all_ans:
-        print(standardization(i))
-    print('共计%d种铺法'%num)
+    if a != b:
+        tile(m,n,a,b)
+        print('所有铺法如下：')
+        for i in all_ans:
+            print('*',standardization(i))
+        print('共计%d种铺法'%num)
 
-    seq = int(input('请在1~%d种铺法中选择一种进行可视化：'%num))
-    choose = all_ans[seq-1]
+        seq = int(input('请在1~%d种铺法中选择一种进行可视化：'%num))
+        choose = all_ans[seq-1]
+
+        draw(choose,all_ans)
     
-    draw(choose)
-    
+    else :
+        #判断特殊情况：当长和宽相等时的情况
+        judge = input('是否输出该种方法？（输入Y或N）')
+        if judge == 'Y':
+            all_ans = [[[i,j]] for i in range(1,n+1) for j in range(1,m+1)]
+            draw(all_ans,all_ans)
+        
     
 if __name__ == '__main__':
     main()
