@@ -162,7 +162,7 @@ def tile(m,n,a,b):
 
 
 def standardization(k):
-    #抱歉老师和助教，我一开始没有看到输出格式要求
+    #抱歉老师和助教，我一开始没有看到输出格式要求，使用坐标输出。故用这个函数将坐标转化为方块的编号
     standard_answer = []
     for i in k:
         order = []
@@ -232,14 +232,8 @@ def draw(choose,all_ans):
     #画砖
     aturtle.pensize(2)
     aturtle.penup()
-    
-    if all_ans != 'There is only one combination!':
-        #将坐标抽象成矩形的对角线的端点
-        drawbricks(choose)
-        
-    else:
-        all_ans = []
-        drawbricks(choose)
+
+    drawbricks(choose)
         
         
 def main():
