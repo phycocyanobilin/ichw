@@ -87,6 +87,7 @@ def tile(m,n,a,b):
         all_ans.append(ans.copy())
         num += 1
         if a == b:
+            #避免a=b时只有一种答案的重复情况。若a==b，则tile函数只计算并输出第一种情况
             return False
         else:
             return True
@@ -111,6 +112,7 @@ def tile(m,n,a,b):
         
         #递归
         t = tile(m,n,a,b)
+        #避免只有一种答案时的重复情况
         if t == False:
             return False
         
@@ -146,6 +148,7 @@ def tile(m,n,a,b):
         
         #递归
         t = tile(m,n,a,b)
+        #避免只有一种答案时的重复情况
         if t == False:
             return False
         
@@ -169,7 +172,7 @@ def tile(m,n,a,b):
 
 
 def standardization(k):
-    #抱歉老师和助教，我一开始没有看到输出格式要求
+    #抱歉老师和助教，我一开始没有看到输出格式要求，使用坐标形式输出。此函数的作用是将坐标形式化为方块的编号。
     standard_answer = []
     for i in k:
         order = []
@@ -260,6 +263,7 @@ def main():
         choose = all_ans[seq-1]
         
     else:
+        #考虑砖为正方形的情况
         choose = all_ans[0]
         print('*',standardization(choose))
         print('共计1种铺法')
