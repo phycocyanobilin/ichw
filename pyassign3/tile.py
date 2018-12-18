@@ -173,7 +173,7 @@ def standardization(k):
     for i in k:
         order = []
         for j in i:
-            seq = j[1]-1+(j[0]-1)*4
+            seq = j[1]-1+(j[0]-1)*m
             order += [seq]
         standard_answer.append(order.copy()) 
     return standard_answer
