@@ -84,9 +84,12 @@ def tile(m,n,a,b):
         j = findblocks()[1]
         
     else :
-        all_ans.append(ans.copy()) 
+        all_ans.append(ans.copy())
         num += 1
-        return True
+        if a == b:
+            return False
+        else:
+            return True
 
     
     #横着铺
@@ -107,7 +110,9 @@ def tile(m,n,a,b):
 
         
         #递归
-        tile(m,n,a,b)
+        t = tile(m,n,a,b)
+        if t == False:
+            return False
         
         #拆砖
         i_3 = i-1
@@ -140,7 +145,9 @@ def tile(m,n,a,b):
         ans.append(blocks)
         
         #递归
-        tile(m,n,a,b)
+        t = tile(m,n,a,b)
+        if t == False:
+            return False
         
         #拆砖
         i_3 = i-1
@@ -162,7 +169,7 @@ def tile(m,n,a,b):
 
 
 def standardization(k):
-    #抱歉老师和助教，我一开始没有看到输出格式要求，使用坐标输出。故用这个函数将坐标转化为方块的编号
+    #抱歉老师和助教，我一开始没有看到输出格式要求
     standard_answer = []
     for i in k:
         order = []
@@ -232,17 +239,18 @@ def draw(choose,all_ans):
     #画砖
     aturtle.pensize(2)
     aturtle.penup()
-
+    
     drawbricks(choose)
-        
+
         
 def main():
     input_test(m,n,a,b)
     
     global all_ans
     
-    if a != b:
-        tile(m,n,a,b)
+    tile(m,n,a,b)
+    
+    if a != b :
         print('所有铺法如下：')
         for i in all_ans:
             print('*',standardization(i))
@@ -250,15 +258,18 @@ def main():
 
         seq = int(input('请在1~%d种铺法中选择一种进行可视化：'%num))
         choose = all_ans[seq-1]
-
-        draw(choose,all_ans)
-    
-    else :
-        #判断特殊情况：当长和宽相等时的情况
+        
+    else:
+        choose = all_ans[0]
+        print('*',standardization(choose))
+        print('共计1种铺法')
         judge = input('是否输出该种方法？（输入Y或N）')
         if judge == 'Y':
-            all_ans = [[[i,j]] for i in range(1,n+1) for j in range(1,m+1)]
-            draw(all_ans,all_ans)
+            pass
+        else :
+            return None
+            
+    draw(choose,all_ans)
         
     
 if __name__ == '__main__':
