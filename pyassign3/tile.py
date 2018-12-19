@@ -1,15 +1,14 @@
 """tile.py: to fill a wall with bricks
-
 __author__ = "向亦凡"
 __pkuid__  = "1800011820"
 __email__  = "1800011820@pku.edu.cn"
-
 """
 
 m = int(input('请输入墙的长度：'))
 n = int(input('请输入墙的高度：'))
 a = int(input('请输入瓷砖的长度：'))
 b = int(input('请输入瓷砖的宽度：'))
+
 
 qiang = [[0 for i in range(m)]for i in range(n)]
 all_ans = []
@@ -24,7 +23,7 @@ def input_test(m,n,a,b):
     if (m*n)%(a*b) == 0 :
         return True
     else :
-        print('Error：没有合适的铺法')
+        print('没有可行的铺法！')
         assert False
 
 
@@ -88,14 +87,13 @@ def tile(m,n,a,b):
         num += 1
         if a == b:
             #避免a=b时只有一种答案的重复情况。若a==b，则tile函数只计算并输出第一种情况
-            return False
+            return (False,1)
         else:
             return True
 
     
     #横着铺
     if test_puzhuan_lr(i,j,a,b):
-        
         #把砖铺上,记录这一块砖的信息
         i_3 = i-1
         blocks = []
@@ -109,12 +107,10 @@ def tile(m,n,a,b):
         #加入答案
         ans.append(blocks)
 
-        
         #递归
-        t = tile(m,n,a,b)
-        #避免只有一种答案时的重复情况
-        if t == False:
-            return False
+        t1 = tile(m,n,a,b)
+        if t1 ==(False,1):
+            return (False,1)
         
         #拆砖
         i_3 = i-1
@@ -125,9 +121,6 @@ def tile(m,n,a,b):
         
         #去掉答案
         ans.pop()
-        
-    else:
-        pass
     
     
     #竖着铺
@@ -147,10 +140,9 @@ def tile(m,n,a,b):
         ans.append(blocks)
         
         #递归
-        t = tile(m,n,a,b)
-        #避免只有一种答案时的重复情况
-        if t == False:
-            return False
+        t2 = tile(m,n,a,b)
+        if t2 ==(False,1):
+            return (False,1)
         
         #拆砖
         i_3 = i-1
@@ -162,10 +154,10 @@ def tile(m,n,a,b):
         #去掉答案
         ans.pop()
         
-        
-    else:
-        pass
 
+    if test_puzhuan_lr(i,j,a,b) == False and test_puzhuan_ud(i,j,a,b) == False:
+        return False
+    
     return num
 
 '''********************************************以上是函数正文**************************************************'''     
@@ -254,20 +246,24 @@ def main():
     tile(m,n,a,b)
     
     if a != b :
-        print('所有铺法如下：')
-        for i in all_ans:
-            print('*',standardization(i))
-        print('共计%d种铺法'%num)
+        if num == 0:
+            print('没有可行的铺法！')
+            return None
+        else:
+            print('所有铺法如下：')
+            for i in all_ans:
+                print('*',standardization(i))
+            print('共计%d种铺法'%num)
 
-        seq = int(input('请在1~%d种铺法中选择一种进行可视化：'%num))
-        choose = all_ans[seq-1]
+            seq = int(input('请在1~%d种铺法中选择一种进行可视化：'%num))
+            choose = all_ans[seq-1]
         
     else:
         #考虑砖为正方形的情况
         choose = all_ans[0]
         print('*',standardization(choose))
         print('共计1种铺法')
-        judge = input('是否输出该种方法？（输入Y或N）')
+        judge = input('是否输出该种方法？（输入Y或N）:')
         if judge == 'Y':
             pass
         else :
@@ -278,5 +274,3 @@ def main():
     
 if __name__ == '__main__':
     main()
-
-
